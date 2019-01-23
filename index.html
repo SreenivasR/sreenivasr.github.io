@@ -1,9 +1,131 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Sree</title>
-</head>
-<body>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Electronics</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="js/uikit.min.js"></script>
+    <script src="js/uikit-icons.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="css/uikit.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Quicksand"
+      rel="stylesheet"
+    />
+  </head>
 
-</body>
+  <body>
+
+    <!-- START nav-bar  -->
+    <nav
+      class="uk-navbar-container uk-margin uk-search-navbar e-navbar"
+      uk-navbar
+      style="z-index: 980;"
+      uk-sticky="bottom: #offset">
+      <div class="uk-navbar-left">
+        <a class="uk-navbar-item uk-logo" href="#">
+            <button class="uk-button uk-button-primary uk-hidden@m e-navbar-menu-btn" type="button" uk-toggle="target: #offcanvas-overlay">
+              <span uk-icon="icon: menu; ratio: 2"></span>
+            </button>
+          <img src="images/electronics.png" height="75px"/>
+        </a>
+      </div>
+      <div class="uk-navbar-right">
+        <button class="uk-button uk-button-primary" type="button" uk-toggle="target: #offcanvas-flip"> <span uk-icon="icon: cart" class="e-cart"></span> </button>
+      </div>
+    </nav>
+    <!-- END nav-bar  -->
+
+    <!-- START cart-modal  -->
+    <div id="offcanvas-flip" uk-offcanvas="flip: true; overlay: true">
+        <div class="uk-offcanvas-bar">
+            <button class="uk-offcanvas-close" type="button" uk-close></button>
+            <h3>Cart</h3>
+              <div id="cartModal"></div>
+              <!-- <button class="uk-button uk-button-primary" type="button" uk-toggle="target: #offcanvas-flip"> <span uk-icon="icon: cart" class="e-cart"></span> &nbsp; Proceed to checkout</button> -->
+            </div>
+        </div>
+    </div>
+    <!-- END cart-modal  -->
+
+    <!-- START mobile-side-menu-modal  -->
+    <div id="offcanvas-overlay" uk-offcanvas="overlay: true">
+        <div class="uk-offcanvas-bar">
+            <button class="uk-offcanvas-close" type="button" uk-close></button>
+            <h3>Options</h3>
+            <ul class="uk-nav uk-nav-default tm-nav" id="mFilterByBrands">
+                <li class="uk-nav-header">Brands</li>
+              </ul>
+              <ul class="uk-nav uk-nav-default tm-nav uk-margin-top" id="mFilterByCategories">
+                <li class="uk-nav-header">Category</li>
+              </ul>
+        </div>
+    </div>
+    <!-- END mobile-side-menu-modal  -->
+  
+    <!-- START page-layout  -->
+    <div class="uk-grid-match uk-grid-small uk-text-center" uk-grid>
+
+      <!-- START side-menu -->
+      <div class="uk-width-1-5@m uk-visible@m">
+        <div class="e-sidebar-left">
+          <h3>Options</h3>
+          <ul class="uk-nav uk-nav-default tm-nav" id="filterByBrands">
+            <li class="uk-nav-header">Brands</li>
+          </ul>
+          <ul class="uk-nav uk-nav-default tm-nav uk-margin-top" id="filterByCategories">
+            <li class="uk-nav-header">Category</li>
+          </ul>
+        </div>
+      </div>
+      <!-- END side-menu -->
+      
+      <div class="uk-width-expand@s">
+
+        <div id="productTopBar" class="productList">
+            <div class="uk-card uk-card-default uk-grid-collapse">
+                <div class="uk-dark uk-background-muted">
+                  <!-- START search-bar -->
+                    <form class="uk-search uk-search-large e-search uk-align-center">
+                        <span uk-search-icon class="uk-visible@s"></span>
+                        <input class="uk-search-input" type="search" placeholder="Search..." onkeyup="search(this)">
+                    </form>
+                  <!-- END search-bar -->
+                </div>
+                <div>
+                </div>
+            </div>
+              
+            <!-- START sorter -->
+            <div class="uk-width-1-5@m uk-align-right e-sort-options">
+                <select class="uk-select" id="sortOptions" onchange="sort(this)">
+                  <option selected disabled>none</option>
+                </select>
+            </div>
+              <!-- END sorter -->
+          </div>
+
+          <!-- START product-listing -->
+          <div id="productList" class="productList">
+            <div class="e-loading-container">
+              <div class="e-loading-item e-loading-item-1"></div>
+              <div class="e-loading-item e-loading-item-2 uk-button-primary"></div>
+              <div class="e-loading-item e-loading-item-3 uk-button-secondary"></div>
+              <div class="e-loading-item e-loading-item-4"></div>
+            </div>
+          </div>
+          <!-- START product-listing -->
+      </div>
+    </div>
+    <!-- END page-layout  -->
+
+  </body>
+  <script src="js/lunr.js"></script>
+  <script src="js/main.js"></script>
 </html>
